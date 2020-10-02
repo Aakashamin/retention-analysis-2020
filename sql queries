@@ -1,0 +1,16 @@
+// NEW USERS IN A WEEK 	
+$sql = "SELECT * FROM `table 1` WHERE (is_new_user = 1) AND (login_time BETWEEN \'2015-11-23 18:36:22\' AND \'2015-11-24 00:00:00\')";
+
+##retention rate calculation 
+
+$sql = "SELECT DISTINCT (user_id) FROM `table 1`\n"
+
+    . "WHERE user_id IN (SELECT DISTINCT (user_id) FROM `table 1` WHERE (is_new_user = 0) AND (login_time BETWEEN \'2015-12-20 00:00:00\' AND \'2015-12-27 00:00:00\'))";
+
+// retention value
+$sqlnw1 = "SELECT DISTINCT (user_id) FROM `table 1` 
+    WHERE user_id IN 
+    (SELECT DISTINCT (user_id) FROM `table 1` WHERE (is_new_user = 1) AND (login_time= $i)) AND (is_new_user = 0 ) AND (login_time = $j)";
+//retention rate
+PHP COMPUTATION 
+retention value/new users of the given period *100
